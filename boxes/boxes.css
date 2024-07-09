@@ -1,0 +1,19 @@
+body {
+    background-color: crimson;
+}
+#mybox {
+    
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin: 5px 5px 10px 15px;
+    outline: 3px solid yellow;
+}
+#myRobot{ 
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: blanchedalmond;
+    outline: 1.5px solid green;
+     
+}

@@ -29,7 +29,7 @@ div#tswcontent {
   float: right;
   width: 80%;
   color: white;
-  /* background-color: white; */
+   background-color: white; 
 }
 
 @media only screen and ( max-width : 629px ) {

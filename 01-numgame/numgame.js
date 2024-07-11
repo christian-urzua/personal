@@ -8,6 +8,8 @@ var myConfetti = confetti.create(null, {
     useWorker: true
     
 });
+const correct= document.getElementById("correct")
+const incorrect=document.getElementById("incorrect")
 const numfield=document.getElementById("num-field")
 const messageText=document.getElementById("message-text")
 let secret;
@@ -31,16 +33,35 @@ function makeGuess() {
 
     if(guess < secret) {
         messageText.innerHTML= `${guess} is too low`;
+        
     } else if (guess > secret){
     messageText.innerHTML=`${guess} is too high`;
     } else if (guess==secret) {
         messageText.innerHTML=`${guess} is correct`;
         myConfetti({
-            partcleCount: 100,
-            spread: 100
+            partcleCount: 100000,
+            spread: 100000,
+            
         });
     } else {
         messageText.innerHTML=`invalid guess`;
     }
+    if(guess<secret){
+        incorrect.style.visibility="visible";setTimeout(function(){
+            incorrect.style.visibility = "hidden";
+        }, 2000);
+    }
+    if(guess>secret){
+        incorrect.style.visibility="visible";
+        setTimeout(function(){
+            incorrect.style.visibility = "hidden";
+        }, 2000);
     
+    }
+    if(guess==secret){
+        correct.style.visibility="visible"
+        setTimeout(function(){
+            correct.style.visibility = "hidden";
+        }, 2000);
+    }
 }

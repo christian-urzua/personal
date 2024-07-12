@@ -10,6 +10,9 @@ function randInt(min, max) {
     rand = Math.floor(rand);
     return rand;
 }
+const guessField=document.getElementById("guess-field")
+const feedbackText=document.getElementById("report-text")
+
 
 function loadGame() {
     fetch('./words_dictionary.json')
@@ -38,7 +41,7 @@ const randomWord=document.getElementById("random-Word");
 function wordsLoaded(){
     let arr = Object.keys(json)
     let randomIndex = randInt(0, arr.length-1)
-    randomWord.innerHTML= arr[randomIndex]
+    randomWord.innerHTML= arr[randomIndex];
 
     for(let i=0; i<arr.length;i++) {
         let word=arr[i]
@@ -46,15 +49,41 @@ if (word.length !=5) continue;
         fiveLetterWords.push(word);
 
     }
-    console.log("all done")
+   
 
     randomIndex=randInt(0,fiveLetterWords.length-1);
-    secret=fiveLetterWords[randomIndex]
+    secret=fiveLetterWords[randomIndex].toLowerCase();
 }
 
 
+function changeGuess (){
+let guess=guessField.value.toLowerCase();
+// SKIP if guess is less than 5 letters
+if(guess.length<5) return;
+// SKIP and empty if guess is more than 5 letters
+if(guess.length>5){
+    guessField.value="";
+    return;
+}
 
+console.log(`Guess:"${guess}" and secret::"${secret}"`);
+// Skip and empty if guess is Not a word
+if( !json.hasOwnProperty(guess)){
+    feedbackText.innerHTML +=`"${guess}" is not a word. Try again.`;
+    guessField.value="";
+return;
+}
+let correctPlacement=0;
+for(let i=0; i<5; i++){
+if(guess[i]==secret[i]){
+    correctPlacement++;
+}
 
+    
+}
+feedbackText.innerHTML+=`"${guess}" has ${correctPlacement} letter(s)in the correct place.<br>`;
+guessField.value="";
+}
 
 
 // TODO: write function isWord(word)

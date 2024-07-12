@@ -49,19 +49,19 @@ function makeGuess() {
     if(guess<secret){
         incorrect.style.visibility="visible";setTimeout(function(){
             incorrect.style.visibility = "hidden";
-        }, 2000);
+        }, 1500);
     }
     if(guess>secret){
         incorrect.style.visibility="visible";
         setTimeout(function(){
             incorrect.style.visibility = "hidden";
-        }, 2000);
+        }, 1500);
     
     }
     if(guess==secret){
         correct.style.visibility="visible"
         setTimeout(function(){
             correct.style.visibility = "hidden";
-        }, 2000);
+        }, 1500);
     }
 }

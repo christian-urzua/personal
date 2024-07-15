@@ -19,7 +19,7 @@ function loadGame() {
         .then(response => response.text())
         .then(text => {
             // Split the text by lines to get individual words
-            json = JSON.parse(text);
+            json = JSON.parse(text); 
             console.log('Words loaded!');
             wordsLoaded();
         })
